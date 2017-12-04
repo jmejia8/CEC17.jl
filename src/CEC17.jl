@@ -1,6 +1,6 @@
 module CEC17
 
-    export testFunc
+    export cec17_test_func
     const localDir = string(@__DIR__)
     const LIB = "$localDir/cfunctions.so"
 
