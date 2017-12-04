@@ -1,18 +1,20 @@
 module CEC17
 
     export testFunc
+    const localDir = string(@__DIR__)
+    const LIB = "$localDir/cfunctions.so"
 
-    function testFunc(x::Vector, func_num)
 
-        lib = joinpath(@__DIR__, "cfunctions.so")
+    function cec17_test_func(x::Vector, func_num::Int)
 
         D = length(x)
         f = [0.0]
 
-        ccall((:func, lib), Void, (Ptr{Cdouble},
+        ccall((:func, LIB), Void, (Ptr{Cdouble},
                                    Ptr{Cdouble},
+                                   Ptr{Cchar},
                                    Int32, Int32, Int32),
-                                   x, f, D, 1, func_num)
+                                   x, f, localDir, D, 1, func_num)
         return f[1]
     end
 

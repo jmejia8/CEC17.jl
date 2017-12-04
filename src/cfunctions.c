@@ -5,7 +5,9 @@
 
 double *OShift,*M,*y,*z,*x_bound;
 int ini_flag=0,n_flag,func_flag,*SS;
+char* dataDir;
 
-void func(double* x, double* f, int n, int m, int func_num, int* evals_ptr){
+void func(double* x, double* f, char* dir, int n, int m, int func_num){
+	dataDir = dir;
 	cec17_test_func(x, f, n, m, func_num);
 }
