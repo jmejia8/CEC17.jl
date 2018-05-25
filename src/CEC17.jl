@@ -22,7 +22,7 @@ module CEC17
         return [-100.0, 100.0]
     end
 
-    function cec17_test_func(x::Vector, func_num::Int)
+    function cec17_test_func(x::Array{Float64}, func_num::Int)
 
         D = length(x)
         f = [0.0]
@@ -35,7 +35,7 @@ module CEC17
         return f[1]
     end
 
-    function cec17_test_COP(x::Vector, func_num::Int)
+    function cec17_test_COP(x::Array{Float64}, func_num::Int)
         D = length(x)
         f = [0.0]
         g = zeros(ng_A[func_num])
