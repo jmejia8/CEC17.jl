@@ -27,7 +27,7 @@ module CEC17
         D = length(x)
         f = [0.0]
 
-        ccall((:func, LIB), Void, (Ptr{Cdouble},
+        ccall((:func, LIB), Cvoid, (Ptr{Cdouble},
                                    Ptr{Cdouble},
                                    Ptr{Cchar},
                                    Int32, Int32, Int32),
@@ -41,7 +41,7 @@ module CEC17
         g = zeros(ng_A[func_num])
         h = zeros(nh_A[func_num])
 
-        ccall((:func, LIB_COP), Void, (Ptr{Cdouble},
+        ccall((:func, LIB_COP), Cvoid, (Ptr{Cdouble},
                                    Ptr{Cdouble},
                                    Ptr{Cdouble},
                                    Ptr{Cdouble},
