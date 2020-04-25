@@ -1,12 +1,18 @@
 module CEC17
 
     export cec17_test_func, cec17_test_COP,searchRange
-    
+
+    if isfile(joinpath(dirname(@__FILE__),"..","deps","deps.jl"))
+        include("../deps/deps.jl")
+    else
+        error("This test function suit is not properly installed. Please run Pkg.build(\"CEC17\")")
+    end
+
     const localDir = string(@__DIR__)
-    const LIB = "$localDir/cfunctions.so"
-    const LIB_COP = "$localDir/cfunctions_cop.so"
+    # const LIB = "$localDir/cfunctions.so"
+    # const LIB_COP = "$localDir/cfunctions_cop.so"
     const ng_A = [1,1,1,2,2,1,1,1,1,1,1,2,3,1,1,1,1,2,2,2,2,3,1,1,1,1,2,2]
-    const nh_A = [1,1,1,1,1,6,2,2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] 
+    const nh_A = [1,1,1,1,1,6,2,2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 
     function searchRange(n::Int) # n = function number
         if n in [4,5,9]
@@ -27,7 +33,7 @@ module CEC17
         D = length(x)
         f = [0.0]
 
-        ccall((:func, LIB), Cvoid, (Ptr{Cdouble},
+        ccall((:cec17_func, optimizationBenchmark), Cvoid, (Ptr{Cdouble},
                                    Ptr{Cdouble},
                                    Ptr{Cchar},
                                    Int32, Int32, Int32),
@@ -41,7 +47,7 @@ module CEC17
         g = zeros(ng_A[func_num])
         h = zeros(nh_A[func_num])
 
-        ccall((:func, LIB_COP), Cvoid, (Ptr{Cdouble},
+        ccall((:cec17_func, constrainedOptimizationBenchmark), Cvoid, (Ptr{Cdouble},
                                    Ptr{Cdouble},
                                    Ptr{Cdouble},
                                    Ptr{Cdouble},
