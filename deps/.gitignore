@@ -1,0 +1,6 @@
+downloads/
+src/
+usr/
+build/
+deps.jl
+*.log
