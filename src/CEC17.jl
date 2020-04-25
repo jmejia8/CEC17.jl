@@ -32,7 +32,7 @@ module CEC17
 
         D = length(x)
         if D ∉ [2, 10, 30, 50, 100] || func_num ∉ 1:30
-            error("D ∉ [10, 30, 50, 100] or func_num ∉ 1:30")
+            error("D ∉ [2, 10, 30, 50, 100] or func_num ∉ 1:30")
             return NaN
         end
         if D == 2 && func_num ∉ 1:10
