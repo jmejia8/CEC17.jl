@@ -34,6 +34,7 @@ provides(SimpleBuild,
         @build_steps begin
             ChangeDirectory(srcdir)
             MAKE_CMD
+            `mv input_data/ "$(lib_path)/input_data/"`
             `mv benchmark.$(Libdl.dlext) "$(unconstrained)"`
         end
     end), [optimizationBenchmark], os = :Unix)
@@ -41,6 +42,7 @@ provides(SimpleBuild,
 provides(SimpleBuild,
     (@build_steps begin
         @build_steps begin
+            `mv input_data_cop/ "$(lib_path)/input_data_cop/"`
             `mv constrained_benchmark.$(Libdl.dlext) "$(constrained)"`
         end
     end), [ constrainedOptimizationBenchmark ], os = :Unix)
