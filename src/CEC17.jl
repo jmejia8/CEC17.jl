@@ -8,7 +8,7 @@ module CEC17
         error("This test function suit is not properly installed. Please run Pkg.build(\"CEC17\")")
     end
 
-    const localDir = string(@__DIR__)
+    const localDir = joinpath(string(@__DIR__), "..", "deps", "usr", "lib")
     # const LIB = "$localDir/cfunctions.so"
     # const LIB_COP = "$localDir/cfunctions_cop.so"
     const ng_A = [1,1,1,2,2,1,1,1,1,1,1,2,3,1,1,1,1,2,2,2,2,3,1,1,1,1,2,2]
