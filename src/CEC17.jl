@@ -34,7 +34,8 @@ module CEC17
         if D == 2 && func_num ∉ 1:10
             error("if D == 2 then func_num in 1:10")
             return NaN
-        elseif D ∉ [10, 30, 50, 100] || func_num ∉ 1:30
+        end
+        if D ∉ [10, 30, 50, 100] || func_num ∉ 1:30
             error("D ∉ [10, 30, 50, 100] or func_num ∉ 1:30")
             return NaN
         end
